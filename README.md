@@ -1,5 +1,7 @@
 # JMeter / InfluxDB / Grafana
-Example setup for visualizing JMeter metrics in Grafana using InfluxDB as storage.
+Example setup for visualizing JMeter metrics in Grafana using InfluxDB as storage. The objective is to deploy something like this:
+
+![deployment-diagram](./deployment-diagram.png)
 
 Follow the steps in each of the following sections.
 
@@ -17,30 +19,19 @@ docker compose up -d
 
 # InfluxDB
 
-## Setup InfluxDB
-Visit in your browser:
+Log in to the container that has InfluxDB installed:
 
+```bash
+docker exec -ti jmeter-influxdb-grafana-influxdb-1 bash
 ```
-localhost:8086
+
+Use `influx` client to create a database called `jmeter`:
+
+```bash
+# influx
+> CREATE DATABASE jmeter
+> SHOW DATABASES
 ```
-
-Set username/password to **admin/admin123**.
-
-Initial bucket name: **jmeter**.
-
-Other fields can be filled with anything you want, you'll use them when setting up grafana.
-
-## Generate Token
-In the next screen go to:
-
-1. Load Data
-2. API TOKENS
-3. GENERATE API TOKEN
-4. Custom API Token:
-
-   - Description: jmeterToken
-   - Buckets: mark read and write in the jmeter bucket.
-   - Click Generate, copy the token and store it.
 
 # Grafana
 
@@ -54,20 +45,15 @@ Go to:
 3. Add data source.
 4. InfluxDB:
 
-   - Query Language: Flux.
+   - Query Language: InfluxQL.
    - URL: `http://influxdb:8086`
-   - In Auth enable the checkmarck: **Basic auth**
-   - User: **admin**.
-   - Password: **admin123**.
-   - Organization: whatever you used when setting up InfluxDB.
-   - Token: copy and paste the token generated previously in InfluxDB.
-   - Default Bucket: **jmeter**.
+   - All other fields can be left empty.
 
 ## Setup Dashborad
 
 Download a dashboard from the community. You have to make sure it maches the InfluxDB version,
-in our case 2.6.
-A good option [here](https://grafana.com/grafana/dashboards/13644-jmeter-load-test-org-md-jmeter-influxdb2-visualizer-influxdb-v2-0-flux/).
+in our case 1.4.
+A good option [here](https://grafana.com/grafana/dashboards/5496-apache-jmeter-dashboard-by-ubikloadpack/)
 Click on **Download JSON**.
 
 Go back to Grafana UI:
@@ -77,12 +63,17 @@ Go back to Grafana UI:
 3. Click on Import.
 4. Click on Upload JSON file.
 5. Pick the file previously downloaded.
-6. Under InfluxDB2.0_Jmeter, pick InfluxDB.
+6. Under DB name pick: `InfluxDB`.
+7. Measurement name: `jmeter`.
 7. Click Import.
 
 # JMeter
 
-TODO:
-- Create a script recording two transactions from https://www.demoblaze.com/
-- Add the backend listener as explained here: https://jmeter.apache.org/usermanual/realtime-results.html#influxdb_v2
-- Run the script and check out the dashboard.
+The example testplan points to the webpage https://www.demoblaze.com.
+
+Download the [testplan.jmx](./testplan.jmx) script this repository.
+
+Modify the **Backend Listener** component like the following. Make sure you use the corresponding values:
+
+![influxdb-backendlister](./influxdb-backendlistener.png)
+

@@ -10,9 +10,9 @@ services:
       - jmeter-influxdb-grafana
 
   influxdb:
-    image: influxdb:2.6
+    image: influxdb:1.4
     volumes:
-      - influxdb:/root/.influxdb2
+      - influxdb:/var/lib/influxdb
     ports:
       - 8086:8086
     networks:
