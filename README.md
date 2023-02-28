@@ -28,7 +28,7 @@ docker exec -ti jmeter-influxdb-grafana-influxdb-1 bash
 Use `influx` client to create a database called `jmeter`:
 
 ```bash
-# influx
+$ influx
 > CREATE DATABASE jmeter
 > SHOW DATABASES
 ```
