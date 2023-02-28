@@ -71,9 +71,9 @@ Go back to Grafana UI:
 
 The example testplan points to the webpage https://www.demoblaze.com.
 
-Download the [testplan.jmx](./testplan.jmx) script this repository.
+Download the [testplan.jmx](./testplan.jmx) from script this repository.
 
-Modify the **Backend Listener** component like the following. Make sure you use the corresponding values:
+Modify the **Backend Listener** component like the following. Make sure you use your corresponding values:
 
 ![influxdb-backendlister](./influxdb-backendlistener.png)
 
