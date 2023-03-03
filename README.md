@@ -37,7 +37,7 @@ $ influx
 
 In your browser go to: [http://localhost:3000](http://localhost:3000).
 
-## Setup Data Source
+### Setup Data Source
 To login use the default usename/password: **admin/admin**.
 
 Go to:
@@ -52,7 +52,7 @@ Go to:
    - All other fields can be left empty.
    - Click: Save & test.
 
-## Setup Dashborad
+### Setup Dashborad
 
 Download a dashboard from the community. You have to make sure it maches the InfluxDB version,
 in our case `1.4`.
