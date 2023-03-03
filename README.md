@@ -35,6 +35,8 @@ $ influx
 
 # Grafana
 
+In your browser go to: [http://localhost:3000](http://localhost:3000).
+
 ## Setup Data Source
 To login use the default usename/password: **admin/admin**.
 
@@ -48,12 +50,14 @@ Go to:
    - Query Language: InfluxQL.
    - URL: `http://influxdb:8086`
    - All other fields can be left empty.
+   - Click: Save & test.
 
 ## Setup Dashborad
 
 Download a dashboard from the community. You have to make sure it maches the InfluxDB version,
-in our case 1.4.
-A good option [here](https://grafana.com/grafana/dashboards/5496-apache-jmeter-dashboard-by-ubikloadpack/)
+in our case `1.4`.
+
+A good option [here](https://grafana.com/grafana/dashboards/5496-apache-jmeter-dashboard-by-ubikloadpack/).
 Click on **Download JSON**.
 
 Go back to Grafana UI:
@@ -69,7 +73,7 @@ Go back to Grafana UI:
 
 # JMeter
 
-The example testplan points to the webpage https://www.demoblaze.com.
+The example testplan points to the webpage [https://www.demoblaze.com](https://www.demoblaze.com).
 
 Download the [testplan.jmx](./testplan.jmx) from script this repository.
 
