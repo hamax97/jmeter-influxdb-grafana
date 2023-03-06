@@ -47,8 +47,9 @@ Go to:
 3. Add data source.
 4. InfluxDB:
 
-   - Query Language: InfluxQL.
+   - Query Language: `InfluxQL`.
    - URL: `http://influxdb:8086`
+   - Database: `jmeter`.
    - All other fields can be left empty.
    - Click: Save & test.
 
