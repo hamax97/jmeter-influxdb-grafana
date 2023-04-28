@@ -10,6 +10,12 @@ Follow the steps in each of the following sections.
 - Install Docker and Docker Compose.
 - Install JMeter.
 
+# Versions used
+
+- JMeter 5.5
+- InfluxDB 1.4
+- Grafana 9.3.6
+
 # Deploy
 
 Run the following command with this repository as working directory:
